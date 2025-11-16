@@ -1,14 +1,59 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h2>I'm extending the base template!</h2>
+<div class="container text-center py-3">
+    <h1>StockManager</h1>
+    <p>Your Smart Inventory</p>
+</div>
+
+<!-- {% for task in tasks %}
+{{ task.task_name }}<br>
+{{ task.category_name }}<br>
+{{ task.task_description }}<br>
+{{ task.is_urgent }}<br>
+{{ task.due_date }}<br>
+{% endfor %} -->
+
+<div class="accordion"
+    id="accordionExample">
 
     {% for task in tasks %}
-        {{ task.task_name }}<br>
-        {{ task.category_name }}<br>
-        {{ task.task_description }}<br>
-        {{ task.is_urgent }}<br>
-        {{ task.due_date }}<br>
+    <!-- Accordion item 1 -->
+    <div class="accordion-item">
+        <h2 class="accordion-header"
+            id="headingOne">
+            <button class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseOne"
+                aria-expanded="true"
+                aria-controls="collapseOne">
+                <strong>{{ task.task_name }}</strong> : {{ task.due_date }}&nbsp;&nbsp;
+                {% if task.is_urgent == "on" %}
+                <!-- Orange tooltip -->
+                <i class="bi bi-exclamation-circle-fill text-warning"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="right"
+                    data-bs-custom-class="tooltip-orange"
+                    title="URGENT!"></i>
+                {% endif %}
+
+            </button>
+        </h2>
+
+        <div id="collapseOne"
+            class="accordion-collapse collapse show"
+            aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <strong>{{ task.category_name }}</strong>
+                <p>{{ task.task_description }}</p>
+            </div>
+        </div>
+    </div>
+
     {% endfor %}
+
+</div>
 
 {% endblock %}
