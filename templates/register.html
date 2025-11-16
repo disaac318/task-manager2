@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-4">
+     <h3 class="text-center">Register</h3>
+
+     <div class="row justify-content-center mt-4">
+          <div class="col-12 col-md-8">
+               <div class="card shadow-sm">
+                    <div class="card-body">
+                         <form method="POST"
+                              action="{{ url_for('register') }}"> <!-- Python def register():  -->
+
+                              <!-- Username -->
+                              <div class="form-floating mb-3">
+                                   <input id="username" name="username" type="text" minlength="3"
+                                        maxlength="30" pattern="^[a-zA-Z0-9_]{5,30}$" class="form-control" required>
+                                   <label for="username">Username</label>
+                              </div>
+
+                              <!-- Password -->
+                              <div class="form-floating mb-3">
+                                   <input id="password" name="password" type="password" minlength="6"
+                                        maxlength="128" class="form-control" required>
+                                   <label for="password">Password</label>
+                              </div>
+
+                              <!-- Submit -->
+                              <div class="d-grid">
+                                   <button type="submit"
+                                        class="btn btn-secondary btn-lg">
+                                        Register <i class="bi bi-box-arrow-in-right"></i>
+                                   </button>
+                              </div>
+
+                         </form>
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>
+
+{% endblock %}
