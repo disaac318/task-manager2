@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="text-center text-secondary mb-4">Add Task</h3>
+
+<div class="card shadow-sm p-4">
+     <form method="POST"
+          action="{{ url_for('add_task') }}">
+
+          <!-- Task Name -->
+          <div class="form-floating mb-3">
+               <input type="text"
+                    class="form-control"
+                    id="task_name"
+                    name="task_name"
+                    minlength="5"
+                    maxlength="50"
+                    required>
+               <label for="task_name">Task Name</label>
+          </div>
+
+          <!-- Task Description -->
+          <div class="form-floating mb-3">
+               <textarea class="form-control"
+                    id="task_description"
+                    name="task_description"
+                    style="height: 120px;"
+                    minlength="5"
+                    maxlength="200"
+                    required></textarea>
+               <label for="task_description">Task Description</label>
+          </div>
+
+          <!-- Due Date -->
+          <div class="form-floating mb-3">
+               <input type="date"
+                    class="form-control"
+                    id="due_date"
+                    name="due_date"
+                    required>
+               <label for="due_date">Due Date</label>
+          </div>
+
+          <!-- Urgent Switch -->
+          <div class="form-check form-switch mb-4">
+               <input class="form-check-input switch-secondary "
+                    type="checkbox"
+                    id="is_urgent"
+                    name="is_urgent">
+               <label class="form-check-label"
+                    for="is_urgent">
+                    <i class="bi bi-exclamation-circle-fill text-warning"></i>
+                    &nbsp; Mark as Urgent
+               </label>
+          </div>
+
+          <!-- Submit button -->
+          <div class="d-grid">
+               <button type="submit"
+                    class="btn btn-secondary btn-lg">
+                    Add Task <i class="bi bi-plus-circle"></i>
+               </button>
+          </div>
+
+     </form>
+</div>
+
+{% endblock %}

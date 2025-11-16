@@ -101,6 +101,18 @@ def logout():
     return redirect(url_for("login"))
 
 
+@app.route("/add_task", methods=["GET", "POST"])
+def add_task():
+    if request.method == "POST":
+
+        
+        # your logic to insert a new task into the database
+        pass
+
+    return render_template("add_task.html")
+
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
