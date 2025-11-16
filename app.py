@@ -27,7 +27,7 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def hello():
-    return "Hello World!"
+    return "<h1>Welcome to the Task Manager</h1>"
 
  
 if __name__ == "__main__":
