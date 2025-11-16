@@ -104,13 +104,11 @@ def logout():
 @app.route("/add_task", methods=["GET", "POST"])
 def add_task():
     if request.method == "POST":
-
-        
         # your logic to insert a new task into the database
         pass
 
-    return render_template("add_task.html")
-
+    categories = mongo.db.categories.find()
+    return render_template("add_task.html", categories=categories)
 
 
 if __name__ == "__main__":

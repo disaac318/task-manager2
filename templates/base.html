@@ -40,33 +40,33 @@
                     id="navMenu">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link"
+                            <a class="nav-link {% if request.endpoint == 'get_tasks' %}text-warning{% endif %}"
                                 href="{{ url_for('get_tasks') }}">Dashboard</a>
                         </li>
                         {% if session.user %}
                         <li class="nav-item">
-                            <a class="nav-link"
+                            <a class="nav-link {% if request.endpoint == 'profile' %}text-warning{% endif %}"
                                 href="{{ url_for('profile', username=session['user']) }}">Profile</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link"
+                            <a class="nav-link {% if request.endpoint == 'add_task' %}text-warning{% endif %}"
                                 href="{{ url_for('add_task') }}">New Task</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link"
+                            <a class="nav-link {% if request.endpoint == 'manage_categories' %}text-warning{% endif %}"
                                 href="#">Manage Categories</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link"
+                            <a class="nav-link {% if request.endpoint == 'logout' %}text-warning{% endif %}"
                                 href="{{ url_for('logout') }}">Log Out</a>
                         </li>
                         {% else %}
                         <li class="nav-item">
-                            <a class="nav-link"
+                            <a class="nav-link {% if request.endpoint == 'login' %}text-warning{% endif %}"
                                 href="{{ url_for('login') }}">Log In</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link"
+                            <a class="nav-link {% if request.endpoint == 'register' %}text-warning{% endif %}"
                                 href="{{ url_for('register') }}">Register</a>
                         </li>
                         {% endif %}
