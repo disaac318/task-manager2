@@ -3,6 +3,7 @@ from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for,)
 from markupsafe import Markup
+from datetime import datetime
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -18,11 +19,13 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-@app.route("/")
 @app.route("/get_tasks")
 def get_tasks():
-    tasks = list(mongo.db.tasks.find())
-    return render_template("tasks.html", tasks=tasks)
+    tasks = list(
+        mongo.db.tasks.find().sort("due_date", 1)   # chronological
+    )
+    today = datetime.today().date()
+    return render_template("tasks.html", tasks=tasks, today=today)
 
 
 @app.route("/register", methods=["GET", "POST"])
