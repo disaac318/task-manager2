@@ -22,24 +22,38 @@
     <div class="accordion-item">
         <h2 class="accordion-header"
             id="heading{{ loop.index }}">
-            <button class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapse{{ loop.index }}"
-                aria-expanded="false"
-                aria-controls="collapse{{ loop.index }}">
-                <strong>{{ task.task_name }}</strong> : {{ task.due_date }}&nbsp;&nbsp;
-                {% if task.is_urgent == "on" %}
-                <!-- Orange tooltip -->
-                <i class="bi bi-exclamation-circle-fill text-warning"
-                    data-bs-toggle="tooltip"
-                    data-bs-placement="right"
-                    data-bs-custom-class="tooltip-orange"
-                    title="URGENT!"></i>
-                {% endif %}
+            <div class="d-flex align-items-center justify-content-between w-100">
+                <!-- Accordion toggle -->
+                <button class="accordion-button collapsed flex-grow-1 me-3"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapse{{ loop.index }}"
+                    aria-expanded="false"
+                    aria-controls="collapse{{ loop.index }}">
+                    <strong>{{ task.task_name }}</strong> : {{ task.due_date }}
+                    {% if task.is_urgent == "on" %}
+                    <i class="bi bi-exclamation-circle-fill text-warning"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="right"
+                        data-bs-custom-class="tooltip-orange"
+                        title="URGENT!"></i>
+                    {% endif %}
+                </button>
 
-            </button>
+                <!-- Edit & Delete buttons -->
+                <div class="d-flex gap-3 me-3">
+                    <a href="#"
+                        class="btn btn-warning btn-sm">
+                        <i class="bi bi-pencil"></i>
+                    </a>
+                    <a href="#"
+                        class="btn btn-danger btn-sm">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                </div>
+            </div>
         </h2>
+
 
         <div id="collapse{{ loop.index }}"
             class="accordion-collapse collapse"
