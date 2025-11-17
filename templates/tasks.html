@@ -19,7 +19,8 @@
 
     {% for task in tasks %}
     <!-- Accordion item -->
-    <div class="accordion-item">
+     {% if session.user|lower == task.created_by|lower %}
+    <div class="accordion-item shadow-sm">
         <h2 class="accordion-header"
             id="heading{{ loop.index }}">
             <div class="d-flex align-items-center justify-content-between w-100">
@@ -68,6 +69,7 @@
             </div>
         </div>
     </div>
+    {% endif %}
 
     {% endfor %}
 
