@@ -30,9 +30,9 @@
                     data-bs-target="#collapse{{ loop.index }}"
                     aria-expanded="false"
                     aria-controls="collapse{{ loop.index }}">
-                    <strong>{{ task.task_name }}</strong> : {{ task.due_date }}
+                    <strong>{{ task.task_name }}</strong> : &nbsp;&nbsp;<small>{{ task.due_date }}</small>
                     {% if task.is_urgent == "on" %}
-                    <i class="bi bi-exclamation-circle-fill text-warning"
+                    <i class="bi bi-exclamation-circle-fill text-warning ms-2"
                         data-bs-toggle="tooltip"
                         data-bs-placement="right"
                         data-bs-custom-class="tooltip-orange"
@@ -42,14 +42,16 @@
 
                 <!-- Edit & Delete buttons -->
                 <div class="d-flex gap-4 me-4">
-                    <a href="#"
+                    <a href="{{ url_for('edit_task', task_id=task._id) }}"
                         class="btn btn-warning btn-sm">
                         <i class="bi bi-pencil"></i>
                     </a>
+
                     <a href="#"
                         class="btn btn-danger btn-sm">
                         <i class="bi bi-trash"></i>
                     </a>
+
                 </div>
             </div>
         </h2>

@@ -26,7 +26,7 @@
     <body class="bg-light bg-custom">
 
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-5 fixed-top">
             <div class="container-fluid">
                 <a class="navbar-brand fw-bold text-warning"
                     href="">Stock Manager</a>
@@ -93,7 +93,7 @@
 
         <!-- Main Content -->
         <main>
-            <div class="container">
+            <div class="container mt-5 pt-3">
                 {% block content %}{% endblock %}
             </div>
         </main>
@@ -120,22 +120,22 @@
         </script>
 
         <script>
-document.addEventListener("DOMContentLoaded", () => {
-    const forms = document.querySelectorAll(".needs-validation");
+            document.addEventListener("DOMContentLoaded", () => {
+                const forms = document.querySelectorAll(".needs-validation");
 
-    forms.forEach(form => {
-        form.addEventListener("submit", event => {
+                forms.forEach(form => {
+                    form.addEventListener("submit", event => {
 
-            if (!form.checkValidity()) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
+                        if (!form.checkValidity()) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
 
-            form.classList.add("was-validated");
-        });
-    });
-});
-</script>
+                        form.classList.add("was-validated");
+                    });
+                });
+            });
+        </script>
 
 
     </body>

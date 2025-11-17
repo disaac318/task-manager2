@@ -2,6 +2,10 @@
     background-color: #fbfbf5 !important;
 }
 
+footer {
+    background-color: #fff !important;
+}
+
 
 /* Active header */
 .accordion-button:not(.collapsed) {
@@ -117,4 +121,3 @@
 .flash-alert.blink {
     opacity: 0.3 !important;
 }
-
