@@ -10,7 +10,7 @@
             <form class="needs-validation"
                 novalidate
                 method="POST"
-                action="{{ url_for('edit_task, task_id=task._id') }}">
+                action="{{ url_for('edit_task', task_id=task._id) }}">
 
                 <!-- Category -->
                 <div class="form-floating mb-3">
