@@ -1,9 +1,13 @@
 .bg-custom {
-    background-color: #fbfbf5 !important;
+    background-color: #e2e2e1 !important;
 }
 
 footer {
     background-color: #fff !important;
+}
+
+.taskTheme {
+    color: #880303 !important;
 }
 
 
