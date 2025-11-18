@@ -25,8 +25,8 @@ def get_tasks():
     tasks = list(
         mongo.db.tasks.find().sort("due_date", 1)   # chronological
     )
-    today = datetime.today().date()
-    return render_template("tasks.html", tasks=tasks, today=today)
+
+    return render_template("tasks.html", tasks=tasks)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -147,12 +147,13 @@ def edit_task(task_id):
     return render_template("edit_task.html", task=task, categories=categories)
 
 
-
-@app.route("/delete_task/<task_id>")
+@app.route("/delete_task/<task_id>", methods=["POST"])
 def delete_task(task_id):
-    mongo.db.tasks.remove({"_id": ObjectId(task_id)})
+    mongo.db.tasks.delete_one({"_id": ObjectId(task_id)})
     flash("Task Successfully Deleted")
     return redirect(url_for("get_tasks"))
+
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

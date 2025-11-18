@@ -2,8 +2,8 @@
 {% block content %}
 
 <div class="container text-center py-3">
-    <h1>TasksTrackr&trade;</h1>
-    <p>Your Smart Must-Do List</p>
+    <h1>StockManager</h1>
+    <p>Your Smart Inventory</p>
 </div>
 
 <!-- {% for task in tasks %}
@@ -42,18 +42,23 @@
                 </button>
 
                 <!-- Edit & Delete buttons -->
-                <div class="d-flex gap-4 me-4">
+                <div class="d-flex align-items-start gap-4 me-4">
                     <a href="{{ url_for('edit_task', task_id=task._id) }}"
-                        class="btn btn-warning btn-sm">
+                        class="btn btn-warning btn-sm d-inline-flex align-items-center">
                         <i class="bi bi-pencil"></i>
                     </a>
 
-                    <a href="{{ url_for('delete_task', task_id=task._id) }}"
-                        class="btn btn-danger btn-sm">
-                        <i class="bi bi-trash"></i>
-                    </a>
-
+                    <form action="{{ url_for('delete_task', task_id=task._id) }}"
+                        method="POST"
+                        class="d-inline-flex">
+                        <button type="submit"
+                            class="btn btn-danger btn-sm d-inline-flex align-items-center">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </form>
                 </div>
+
+
             </div>
         </h2>
 
