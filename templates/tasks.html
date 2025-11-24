@@ -31,7 +31,7 @@
                     data-bs-target="#collapse{{ loop.index }}"
                     aria-expanded="false"
                     aria-controls="collapse{{ loop.index }}">
-                    <strong>{{ task.task_name }}</strong> : &nbsp;&nbsp;<small>{{ task.due_date }}</small>
+                    <strong>{{ task.task_name }}</strong> : &nbsp;&nbsp;<small>{{ task.due_date|format_date }}</small>
                     {% if task.is_urgent == "on" %}
                     <i class="bi bi-exclamation-circle-fill text-warning ms-2"
                         data-bs-toggle="tooltip"
