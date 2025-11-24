@@ -9,6 +9,9 @@
 
             <form method="POST"
                 action="{{ url_for('edit_task', task_id=task._id) }}">
+                <input type="hidden"
+                    name="csrf_token"
+                    value="{{ csrf_token() }}">
 
                 <!-- Category Selection -->
                 <div class="mb-3">

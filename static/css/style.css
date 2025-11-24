@@ -10,6 +10,18 @@ footer {
     color: #880303 !important;
 }
 
+.navbar-toggler .navbar-icon-close {
+    display: none;
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-icon-open {
+    display: none;
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-icon-close {
+    display: inline-block;
+}
+
 
 /* Active header */
 .accordion-button:not(.collapsed) {

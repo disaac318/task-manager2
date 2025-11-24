@@ -38,8 +38,12 @@
                 <button class="navbar-toggler"
                     type="button"
                     data-bs-toggle="collapse"
-                    data-bs-target="#navMenu">
-                    <span class="navbar-toggler-icon"></span>
+                    data-bs-target="#navMenu"
+                    aria-controls="navMenu"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="bi bi-list navbar-icon-open fs-1 text-white"></i>
+                    <i class="bi bi-x-lg navbar-icon-close fs-1 text-white"></i>
                 </button>
                 <div class="collapse navbar-collapse"
                     id="navMenu">

@@ -5,6 +5,7 @@ from flask import (
 from markupsafe import Markup
 from datetime import datetime
 from flask_pymongo import PyMongo
+from flask_wtf import CSRFProtect
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
@@ -17,6 +18,7 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
+csrf = CSRFProtect(app)
 
 
 @app.route("/")
@@ -68,7 +70,8 @@ def login():
             ):
                 session["user"] = request.form.get("username").lower()
                 flash(Markup(
-                    f"<h2>Welcome, {request.form.get('username')}!</h2>What is your focus today?"
+                    f"<h2>Welcome, {request.form.get(
+                        'username')}!</h2>What is your focus today?"
                 ).format(request.form.get("username")))
                 return redirect(url_for("profile", username=session["user"]))
             else:
@@ -123,6 +126,7 @@ def add_task():
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("add_task.html", categories=categories)
 
+
 @app.route("/edit_task/<task_id>", methods=["GET", "POST"])
 def edit_task(task_id):
     if request.method == "POST":
@@ -152,7 +156,6 @@ def delete_task(task_id):
     mongo.db.tasks.delete_one({"_id": ObjectId(task_id)})
     flash("Task Successfully Deleted")
     return redirect(url_for("get_tasks"))
-
 
 
 if __name__ == "__main__":

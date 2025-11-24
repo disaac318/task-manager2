@@ -11,6 +11,9 @@
                 novalidate
                 method="POST"
                 action="{{ url_for('add_task') }}">
+                <input type="hidden"
+                    name="csrf_token"
+                    value="{{ csrf_token() }}">
 
                 <!-- Category -->
                 <div class="form-floating mb-3">
